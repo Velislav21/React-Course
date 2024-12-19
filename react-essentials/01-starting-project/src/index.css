@@ -148,3 +148,20 @@ main h2 {
 #tab-content code {
   font-size: 1rem;
 }
+.nav {
+  display: flex;
+  gap: 30px;
+}
+ul li {
+  display: inline-block;
+}
+.nav-link {
+  text-decoration: none;
+  padding: 7px 14px;
+  color: #cac7ce;
+}
+.nav-link:hover {
+  background-color: #8e4ece;
+  color: #fff;
+  border-radius: 10px;
+}
