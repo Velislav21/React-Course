@@ -1,26 +1,8 @@
-import reactImg from './assets/react-core-concepts.png'
 import componentsImg from './assets/components.png'
+import Header from './components/Header.jsx';
+import Nav from './components/Nav.jsx';
 import { CORE_CONCEPTS } from './data.js';
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
-
-function genRandomInt(max) {
-    return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-
-    const description = reactDescriptions[genRandomInt(2)]
-
-    return (
-        <header>
-            <img src={reactImg} alt="Stylized atom" />
-            <h1 >React Essentials</h1>
-            <p>
-                {description} React concepts you will need for almost any app you are going to build!
-            </p>
-        </header>
-    );
-}
+import CoreConcept from './components/CoreConcept.jsx';
 
 function App() {
     return (
@@ -40,28 +22,4 @@ function App() {
         </div>
     );
 }
-
-function CoreConcept({ image, title, description }) {
-    return (
-        <li>
-            <img src={image} />
-            <h3>{title}</h3>
-            <p>{description}</p>
-        </li>
-    )
-}
-
-function Nav() {
-    return (
-        <nav>
-            <ul className='nav'>
-                <li><a href="#" className='nav-link'>Components</a></li>
-                <li><a href="#" className='nav-link'>JSX</a></li>
-                <li><a href="#" className='nav-link'>Props</a></li>
-                <li><a href="#" className='nav-link'>State</a></li>
-            </ul>
-        </nav>
-    )
-}
-
 export default App;
