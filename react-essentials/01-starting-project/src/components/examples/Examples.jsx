@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EXAMPLES } from "../../data";
 import Section from "../Section";
 import TabButton from "../TabButton";
+import Tabs from "../Tabs";
 
 export default function Examples() {
 
@@ -27,15 +28,20 @@ export default function Examples() {
     }
 
     return (
-        <Section id="examples" >
-            <h2>Examples</h2>
-            <menu>
-                <TabButton onClick={() => clickHandler('components')}>Components</TabButton>
-                <TabButton onClick={() => clickHandler('jsx')}>JSX</TabButton>
-                <TabButton onClick={() => clickHandler('props')}>Props</TabButton>
-                <TabButton onClick={() => clickHandler('state')}>State</TabButton>
-            </menu>
-            {tabContent}
+        <Section title="Examples" id="examples" >
+            <Tabs
+            ButtonsContainer="menu"
+            buttons={
+                <>
+                    <TabButton onClick={() => clickHandler('components')}>Components</TabButton>
+                    <TabButton onClick={() => clickHandler('jsx')}>JSX</TabButton>
+                    <TabButton onClick={() => clickHandler('props')}>Props</TabButton>
+                    <TabButton onClick={() => clickHandler('state')}>State</TabButton>
+                </>
+            }>
+                {tabContent}
+            </Tabs>
+
         </Section>
     )
 }
