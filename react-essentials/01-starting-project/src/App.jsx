@@ -1,12 +1,18 @@
+import { useState } from 'react'
+
 import Header from './components/Header/Header.jsx';
 import { CORE_CONCEPTS } from './data.js';
+import { EXAMPLES } from './data.js';
 import CoreConcept from './components/CoreConcepts/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
 
-    function clickHandler(selectedButton){
-        console.log(selectedButton)
+    const [selectedTopic, setSelectedTopic] = useState('Please click a button')
+
+    function clickHandler(selectedButton) {
+        setSelectedTopic(selectedButton);
+
     }
 
     return (
@@ -30,7 +36,16 @@ function App() {
                         <TabButton onSelect={() => clickHandler('Props')}>Props</TabButton>
                         <TabButton onSelect={() => clickHandler('State')}>State</TabButton>
                     </menu>
+                    <div id="tab-content">
+                        <h3>
+                        </h3>
+                        <p></p>
+                        <pre>
+                            <code>
 
+                            </code>
+                        </pre>
+                    </div>
                 </section>
             </main>
         </div>
