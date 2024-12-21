@@ -1,8 +1,8 @@
-export default function TabButton({children, onSelect}) {
+export default function TabButton({children, onSelect, ...props}) {
 
     return (
         <li>
-            <button onClick={onSelect}>{children}</button>
+            <button onClick={onSelect} {...props}>{children}</button>
         </li>
     )
 }
