@@ -33,10 +33,10 @@ export default function Examples() {
             ButtonsContainer="menu"
             buttons={
                 <>
-                    <TabButton onClick={() => clickHandler('components')}>Components</TabButton>
-                    <TabButton onClick={() => clickHandler('jsx')}>JSX</TabButton>
-                    <TabButton onClick={() => clickHandler('props')}>Props</TabButton>
-                    <TabButton onClick={() => clickHandler('state')}>State</TabButton>
+                    <TabButton onSelect={() => clickHandler('components')}>Components</TabButton>
+                    <TabButton onSelect={() => clickHandler('jsx')}>JSX</TabButton>
+                    <TabButton onSelect={() => clickHandler('props')}>Props</TabButton>
+                    <TabButton onSelect={() => clickHandler('state')}>State</TabButton>
                 </>
             }>
                 {tabContent}
