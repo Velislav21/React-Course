@@ -1,0 +1,1 @@
+To run the application --> open the terminal and type : npm run dev

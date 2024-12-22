@@ -25,7 +25,6 @@ function App() {
             
             const currentPlayer = deriveActivePlayer(prevTurns)
 
-
             const updatedTurns = [
                 { square: { row: rowIndex, col: columnIndex }, player: currentPlayer },
                 ...prevTurns
