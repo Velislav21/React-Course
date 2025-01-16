@@ -1,0 +1,19 @@
+.content {
+    border-bottom: 1px solid rgb(179, 175, 175);
+    margin-bottom: 1em;
+}
+.hidden {
+    display: none;
+}
+
+.heading {
+    display: flex;
+    gap: 1.5em;
+}
+
+.heading button {
+    border: none;
+    background-color: white;
+    font-size: 1.5em;
+    color: rgb(238, 148, 148)
+}
