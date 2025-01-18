@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import styles from '../accordion-item/accordion-item.module.css'
+import styles from './accordion-item.module.css'
 
 export default function AccordionItem({ title, content }) {
 
