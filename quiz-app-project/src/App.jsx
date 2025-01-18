@@ -1,9 +1,14 @@
 import Header from "./components/header/Header";
+import Quiz from "./components/quiz/Quiz";
 
 function App() {
+
     return (
         <>
-            <Header/>
+            <Header />
+            <main>
+                <Quiz />
+            </main>
         </>
     )
 }
