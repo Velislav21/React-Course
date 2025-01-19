@@ -15,17 +15,24 @@ export default function Answers({ onSelect, answers, selectedAnswer, answerState
                 const isSelected = selectedAnswer === answer;
                 let cssClass = ''
 
-                if (answerState === 'answered') {
-                    cssClass = 'answered'
+                if (answerState === 'answered' && isSelected) {
+                    cssClass = 'selected'
                 }
 
-                if ((answerState === 'correct' || answer === 'wrong') && isSelected) {
+                if ((answerState === 'correct' || answerState === 'wrong') && isSelected) {
                     cssClass = answerState
                 }
 
-                return <li key={answer} className="answer">
-                    <button onClick={() => onSelect(answer)} className={cssClass}>{answer}</button>
-                </li>
+                return (
+                    <li key={answer} className="answer">
+                        <button
+                            onClick={() => onSelect(answer)}
+                            className={cssClass}
+                            disabled={answerState !== ''}
+                        >{answer}
+                        </button>
+                    </li>
+                )
             }
             )}
         </ul>
