@@ -24,9 +24,7 @@ export default function Signup() {
                     />
                 </div>
             </div>
-
             <hr />
-
             <div className="control-row">
                 <div className="control">
                     <label htmlFor="first-name">First Name</label>
