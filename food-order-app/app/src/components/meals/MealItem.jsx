@@ -1,16 +1,26 @@
-export default function MealCard({ name, price, description, image }) {
+import { useContext } from "react"
+
+import CartContext from "../../context/CartContext.jsx";
+import Button from "../Button.jsx"
+
+export default function MealCard({ meal }) {
+    const cartCtx = useContext(CartContext);
+
+    function handleAddMealInCart() {
+        cartCtx.addItem(meal);
+    }
 
     return (
         <li className="meal-item">
             <article>
-                <img src={`http://localhost:3000/${image}`} alt="" />
+                <img src={`http://localhost:3000/${meal.image}`} alt="" />
                 <div>
-                    <h3>{name}</h3>
-                    <p className="meal-item-price">{price}</p>
-                    <p className="meal-item-description">{description}</p>
+                    <h3>{meal.name}</h3>
+                    <p className="meal-item-price">{meal.price}</p>
+                    <p className="meal-item-description">{meal.description}</p>
                 </div>
                 <p className="meal-item-actions">
-                    <button className="button">Add to Cart</button>
+                    <Button onClick={handleAddMealInCart}>Add to Cart</Button>
                 </p>
             </article>
         </li>

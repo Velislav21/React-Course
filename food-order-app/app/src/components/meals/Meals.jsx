@@ -23,7 +23,7 @@ export default function Meals() {
             {meals.map((meal) => (
                 <MealItem
                     key={meal.id}
-                    {...meal}
+                    meal={meal}
                 />
             ))}
         </ul>

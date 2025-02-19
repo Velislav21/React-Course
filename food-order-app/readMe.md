@@ -1,1 +1,1 @@
-The server, images and styles are provided by the course lecture.
+The server, images and styles are provided by the course lecturer.
