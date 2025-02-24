@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
+import useFetch from "../../hooks/useFetch.js";
 import MealItem from "./MealItem.jsx"
+
+const requestConfig = {}
 
 export default function Meals() {
 
-    const [meals, setMeals] = useState([])
-
-    useEffect(() => {
-
-        (async () => {
-
-            const response = await fetch('http://localhost:3000/meals')
-            if (!response.ok) {
-                return
-            }
-            const mealsData = await response.json();
-            setMeals(mealsData)
-        })()
-    }, [])
+    const { data: meals, isLoading, error } = useFetch('http://localhost:3000/meals', requestConfig, [])
 
     return (
         <ul id="meals">
@@ -28,4 +17,4 @@ export default function Meals() {
             ))}
         </ul>
     )
-}
+} 
