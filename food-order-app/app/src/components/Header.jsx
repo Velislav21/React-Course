@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from './elements/Button'
 import logo from '../assets/logo.jpg'
 import CartContext from '../context/CartContext'
 import UserProgressContext from '../context/UserProgressContext'
