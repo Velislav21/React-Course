@@ -6,7 +6,7 @@ const requestConfig = {}
 
 export default function Meals() {
 
-    const { data: meals, isLoading, error } = useFetch('http://localhost:3000/mealss', requestConfig, [])
+    const { data: meals, isLoading, error } = useFetch('http://localhost:3000/meals', requestConfig, [])
 
     if (isLoading) {
     }

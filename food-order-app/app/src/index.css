@@ -24,7 +24,7 @@ body {
   border-radius: 0.3rem;
   padding: 1em;
 }
-.error h2, p {
+.error > h2, p.err-msg {
   color:rgb(77, 41, 41)
 }
 .error * {

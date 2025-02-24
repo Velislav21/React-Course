@@ -17,12 +17,18 @@ export default function Checkout() {
 
     const cartCtx = useContext(CartContext);
     const userProgressCtx = useContext(UserProgressContext)
-    const { data: order, isLoading, error, sendRequest } = useFetch('http://localhost:3000/orderss', reqConfig);
+    const { data: order, isLoading, error, sendRequest, clearData } = useFetch('http://localhost:3000/orders', reqConfig);
 
     const cartTotal = cartCtx.items.reduce((totalPrice, item) => totalPrice + item.quantity * item.price, 0)
 
     function handleCloseCheckoutModal() {
         userProgressCtx.hideCheckout()
+    }
+
+    function handleOrderFinish() {
+        userProgressCtx.hideCheckout();
+        cartCtx.clearCart();
+        clearData();
     }
 
     function handleSubmit(event) {
@@ -48,6 +54,18 @@ export default function Checkout() {
         result = <span>Sending data...</span>
     }
 
+    if (order && !error) {
+        return (<Modal
+            open={userProgressCtx.progress === "checkout"}
+            onClose={handleOrderFinish}
+        >
+            <h2>Order Submitted</h2>
+            <p className="modal-actions">
+                <Button onClick={handleOrderFinish}>Okay</Button>
+            </p>
+        </Modal>)
+    }
+
     return (
         <Modal
             open={userProgressCtx.progress === 'checkout'}
@@ -68,7 +86,7 @@ export default function Checkout() {
 
                 </div>
 
-                {error && <Error title="Failed to submit an order" message={error}/>}
+                {error && <Error title="Failed to submit an order" message={error} />}
 
                 <p className="modal-actions">
                     {result}
