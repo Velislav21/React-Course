@@ -3,7 +3,7 @@ import { useContext } from "react"
 import CartContext from "../../context/CartContext.jsx";
 import Button from "../Button.jsx"
 
-export default function MealCard({ meal }) {
+export default function MealItem({ meal }) {
     const cartCtx = useContext(CartContext);
 
     function handleAddMealInCart() {

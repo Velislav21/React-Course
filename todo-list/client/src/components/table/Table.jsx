@@ -35,7 +35,7 @@ export default function Table() {
                             key={todo._id}
                             {...todo}
                             onStatusChange={changeStatusHandler}
-                            />)}
+                        />)}
 
                 </tbody>
             </table>
