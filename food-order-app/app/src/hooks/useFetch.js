@@ -20,12 +20,12 @@ export default function useFetch(url, config, initialData) {
     const [error, setError] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
-    const sendRequest = useCallback(async function sendRequest() {
+    const sendRequest = useCallback(async function sendRequest(data) {
 
         setIsLoading(true);
 
         try {
-            const responseData = await request(url, config);
+            const responseData = await request(url, {...config, body: data});
             setData(responseData);
         } catch (err) {
 

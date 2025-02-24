@@ -4,11 +4,20 @@ import UserProgressContext from "../../context/UserProgressContext";
 import Modal from "../modal/Modal";
 import Input from "../elements/Input";
 import Button from "../elements/Button";
+import useFetch from "../../hooks/useFetch";
+import Error from "../util/Error";
 
+const reqConfig = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+}
 export default function Checkout() {
 
     const cartCtx = useContext(CartContext);
     const userProgressCtx = useContext(UserProgressContext)
+    const { data: order, isLoading, error, sendRequest } = useFetch('http://localhost:3000/orderss', reqConfig);
 
     const cartTotal = cartCtx.items.reduce((totalPrice, item) => totalPrice + item.quantity * item.price, 0)
 
@@ -22,18 +31,21 @@ export default function Checkout() {
         const formData = new FormData(event.target) // from the name attributes you extract the values entered by the user from input fields
         const data = Object.fromEntries(formData) // {email : test@abv.bg, ...}
 
-        fetch('http://localhost:3000/orders', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                order: {
-                    items: cartCtx.items,
-                    customer: data
-                }
-            }),
-        })
+
+        sendRequest(JSON.stringify({
+            order: {
+                items: cartCtx.items,
+                customer: data
+            }
+        }));
+    }
+
+    let result = <>
+        <Button type="button" onClick={handleCloseCheckoutModal}>Close</Button>
+        <Button>Submit</Button>
+    </>
+    if (isLoading) {
+        result = <span>Sending data...</span>
     }
 
     return (
@@ -55,9 +67,11 @@ export default function Checkout() {
                     <Input label="City" type="text" id="city" />
 
                 </div>
+
+                {error && <Error title="Failed to submit an order" message={error}/>}
+
                 <p className="modal-actions">
-                    <Button type="button" onClick={handleCloseCheckoutModal}>Close</Button>
-                    <Button>Submit</Button>
+                    {result}
                 </p>
             </form>
         </Modal>
